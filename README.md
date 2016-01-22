@@ -45,8 +45,7 @@ Dumping InnoDB tables:
 Backup completed successfully
 
 real	0m4.425s
-user	0m0.035s
-sys	0m0.048s```
+```
 
 Just try in your test server and refer log about exact actions taken
 

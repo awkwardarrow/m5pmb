@@ -15,6 +15,10 @@ go get github.com/go-sql-driver/mysql
 go get github.com/cheggaaa/pb
 ```
 
+## License
+
+ *** Pending license approval
+
 ## Usage 
 
 ```shell
@@ -73,6 +77,9 @@ connection details, concurrency, verbosity, destination, ignored databases, etc
 
 m5pmb is somewhat lighter version of mydumper. Key differences:
   * m5pmb uses SELECT * INTO OUTFILE, which puts some limitations, but should be much faster (when data reads is not bottleneck)
-  * Currently m5pmp should handle huge Partitioned tables better. (Tries to dump each partition separately)
-  * m5pmb is split into two phases for getting list of tables (m5metapart) and actual backup (m5pmp). So it is possible to review / customize list of processed tables. mydumper uses regular expressions for that
+  * Currently m5pmb should handle huge Partitioned tables better. (Tries to dump each partition separately)
+  * m5pmb is split into two phases for getting list of tables (m5metapart) and actual backup (m5pmb). So it is possible to review / customize list of processed tables. mydumper uses regular expressions for that
   * m5pmb creates raw data files, while mydumper generates INSERT sql commands
+  * Currently m5pmb doesn't work around slow queries before issueing FLUSH TABLES WITH READ LOCK
+  * Currently mydumper doesn't supprot backup of MyISAM
+  

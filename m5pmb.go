@@ -9,9 +9,9 @@ import (
 	"strconv"
 	"time"
 	"log"
-    "database/sql"
-    _ "github.com/go-sql-driver/mysql"
-    "github.com/cheggaaa/pb"
+	"database/sql"
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/cheggaaa/pb"
 )
 
 const g_ConnectString = "user:password@tcp(127.0.0.1:3306)/test"
@@ -56,6 +56,11 @@ func (t *tablePart) BuildOutFileSql(filename string) string {
 			sql += fmt.Sprintf(" where `%s` > %s ", t.pk, t.from)
 		}
 	}
+	// make sure to use Unix path separator in SQL on Windows
+	if g_separ != "/" {
+		filename = strings.Replace(filename,"\\","/",-1)
+	}				
+
 	sql += fmt.Sprintf(" into outfile '%s' ", filename)
 	return sql
 }

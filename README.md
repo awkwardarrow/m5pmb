@@ -22,7 +22,7 @@ go get github.com/cheggaaa/pb
 ```
 
 In result, new directory in current folder will be created with .sql and .dat files needed to restore the tables.
-Use ./m5metapart script to generate sample input file from your database
+Use ./m5metapart > file_with_tables.txt script to generate sample input file from your database
 
 
 E.g. following output was generated to create backup of ~500M MySQL Enterprise Monitor instance

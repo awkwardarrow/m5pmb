@@ -68,3 +68,11 @@ connection details, concurrency, verbosity, destination, ignored databases, etc
   * Generate and verify input file using m5metapart
   * Mount partition where 'mysql' user has full write access. For the fastest result it should be on dedicated phycial device
   * Run m5pmb
+
+## Comparison to mydumper
+
+m5pmb is somewhat lighter version of mydumper. Key differences:
+  * m5pmb uses SELECT * INTO OUTFILE, which puts some limitations, but should be much faster (when data reads is not bottleneck)
+  * Currently m5pmp should handle huge Partitioned tables better. (Tries to dump each partition separately)
+  * m5pmb is split into two phases for getting list of tables (m5metapart) and actual backup (m5pmp). So it is possible to review / customize list of processed tables. mydumper uses regular expressions for that
+  * m5pmb creates raw data files, while mydumper generates INSERT sql commands
